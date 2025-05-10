@@ -47,12 +47,15 @@ def get_symbol_stock_data(symbol):
 
 # Call the function and print the result
 if __name__ == "__main__":
-    fed_data = get_fed_data(2)
+    fed_data = get_fed_data(1052)
     print(fed_data.head())
     # Save to CSV
     fed_data.to_csv('data/fed_data.csv', index=False)
     print("Data saved to fed_data.csv")
-    stock_data = get_symbol_stock_data("IBM")
+    
+
+    #gets data on the S&p 500 index
+    stock_data = get_symbol_stock_data("GSPC")
     print(stock_data.head())
     # Save to CSV
     stock_data.to_csv('data/raw_stock_data.csv', index=True)
