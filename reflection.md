@@ -25,8 +25,8 @@ Examples:
 
 I think this assignment was the highlight of the class for me. It was super satisfying to be able to synthesize all the different units we worked on and be able to apply it to a topic that interests me. 
 
-I was also techically challenged by this project; mainly by figuring out how to get the data I actually needed, and how to display it with the moving averages on streamlit. 
+I was also techically challenged by this project; mainly by figuring out how to get the data I actually needed, and how to display it with the moving averages on streamlit. To overcome this issue I went back over the lecture slides and used ChatGPT to deal with the error messages I was using.
 
-I was most frustrated by getting the api calls to work, as the documentation for the alpha vantage api (the api for the individual stocks) was lacking in my opinion. Though one thing I did not realize until after I had completed most of this project was that I could have called the api to return the data in csv form (as opposed to json), but by the time I realized this I already had so many other things lying on top of those api_calls functions that I did not want to mess with it just to make it three lines of code more efficient. 
+I was most frustrated by getting the api calls to work, as the documentation for the Alpha Vantage api (the api for the individual stocks) was lacking in my opinion. Though one thing I did not realize until after I had completed most of this project was that I could have called the api to return the data in csv form (as opposed to json), but by the time I realized this I already had so many other things lying on top of those api_calls functions that I did not want to mess with it just to make it three lines of code more efficient. 
 
-If I had more time to complete this project I would add more visualizations and input options to the streamlit website and write more tests for the functions in tool_functions. 
+If I had more time to complete this project I would add more visualizations and input options to the streamlit website and write more tests for the functions in tool_functions. I think it would be cool to edit this program so that the user would be able to input any publicly available ticker number, and be able to see visualizations on it.
