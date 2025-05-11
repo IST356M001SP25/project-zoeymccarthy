@@ -19,4 +19,4 @@ I am double majoring in Economics, and one thing we talked about in a macroecono
  
  We have seen this recently with the economic chaos that has come with the Trump Administration's tarriff policy.
 
- With this project, I wanted to highlight months when there has been increased uncertainity around the United State's Treasury Bond's status as a highly safe asset.
+ With this project, I wanted to highlight months when there has been increased uncertainity around the United State's Treasury Bond's status as a highly safe asset. This could be useful to policymakers in congress or in the Federal Reserve so that they could address any issues with public uncertainity towards U.S. treasury bonds early, as well as tracking times when historically there has been increased uncertainity with the safety of U.S. treasury bonds.
