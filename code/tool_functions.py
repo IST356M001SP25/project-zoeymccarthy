@@ -13,7 +13,7 @@ def clean_stock_data(symbol):
         "date", "open", "high", "low", "close",
         "adjusted_close", "volume", "dividend_amount"]
     #convert "date" column to datetime
-    df["date"] = pd.to_datetime(df["date"])
+    df["date"] = pd.to_datetime(df["date"], errors='coerce')
     #convert the other data types
     df["open"] = pd.to_numeric(df["open"], errors='coerce')
     df["high"] = pd.to_numeric(df["high"], errors='coerce')
@@ -22,8 +22,10 @@ def clean_stock_data(symbol):
     df["adjusted_close"] = pd.to_numeric(df["adjusted_close"], errors='coerce')
     df["volume"] = pd.to_numeric(df["volume"], errors='coerce', downcast='integer')
     df.drop(columns=["dividend_amount"], inplace=True)
+    #drop any pre-covid rows
+    df_filtered = df[df["date"] >= pd.to_datetime('2020-02-28')]
     #saves the cleaned data to a new csv file
-    df.to_csv(f'cache/cleaned_{lower_symbol}_data.csv', index=False)
+    df_filtered.to_csv(f'cache/cleaned_{lower_symbol}_data.csv', index=False)
     print(f"Data saved to cache/cleaned_{lower_symbol}_data.csv")
 
 
