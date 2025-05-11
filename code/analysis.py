@@ -11,7 +11,7 @@ st.markdown(
     <style>
     .stApp {
         background-color: #4169E1;  /* Royal Blue */
-        color: white;  /* Optional: Make text white for better contrast */
+        color: white;  /*make text white for better contrast */
     }
     </style>
     """,
@@ -117,7 +117,7 @@ sns.lineplot(data=selected_data, x='date', y='price_ma', label=f'{window}-Day MA
 ax1.set_title(f'{selected_ticker} Adjusted Close Price')
 ax1.set_xlabel('Date')
 ax1.set_ylabel('Price')
-plt.xticks(rotation=45, ha='right', fontsize=8)
+plt.xticks(rotation=45, ha='right', fontsize=10)
 st.pyplot(fig1)
 
 #volume plot
@@ -128,7 +128,7 @@ sns.lineplot(data=selected_data, x='date', y='volume_ma', label=f'{window}-Day M
 ax2.set_title(f'{selected_ticker} Volume of Trades')
 ax2.set_xlabel('Date')
 ax2.set_ylabel('Volume')
-plt.xticks(rotation=45, ha='right', fontsize=8)
+plt.xticks(rotation=45, ha='right', fontsize=10)
 st.pyplot(fig2)
 
 
