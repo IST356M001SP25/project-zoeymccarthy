@@ -21,7 +21,7 @@ def clean_stock_data(symbol):
     df["close"] = pd.to_numeric(df["close"], errors='coerce')
     df["adjusted_close"] = pd.to_numeric(df["adjusted_close"], errors='coerce')
     df["volume"] = pd.to_numeric(df["volume"], errors='coerce', downcast='integer')
-    df["dividend_amount"] = pd.to_numeric(df["dividend_amount"], errors='coerce')
+    df.drop(columns=["dividend_amount"], inplace=True)
     #saves the cleaned data to a new csv file
     df.to_csv(f'cache/cleaned_{lower_symbol}_data.csv', index=False)
     print(f"Data saved to cache/cleaned_{lower_symbol}_data.csv")

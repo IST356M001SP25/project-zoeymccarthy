@@ -29,20 +29,21 @@ def get_fed_data(row_amt):
 #Note: I  included my API key in the code; the API only allows 25 calls per API key per day
 def get_symbol_stock_data(symbol):
     base_url = "https://www.alphavantage.co/query?"
-    func = "function=TIME_SERIES_WEEKLY_ADJUSTED"
+    func = "function=TIME_SERIES_MONTHLY_ADJUSTED"
     sort = "&sort=asc"
     link_symbol = "&symbol=" + symbol
     apikey = "&apikey=KNRVCWZ5R9ZZEXXE"
+    #data_type = "&datatype=csv"
     API = f"{base_url}{func}{link_symbol}{apikey}"
     # Call API and load into a pandas dataframe
     response = requests.get(API)
     #raise for status if fails
     response.raise_for_status()
     data = response.json()
-    #Extract / convert the "Weekly Adjusted Time Series" part
-    weekly_data = data["Weekly Adjusted Time Series"]
+    #Extract / convert the "Monthly Adjusted Time Series" part
+    monthly_data = data["Monthly Adjusted Time Series"]
     #convert to DataFrame
-    df = pd.DataFrame.from_dict(weekly_data, orient='index')
+    df = pd.DataFrame.from_dict(monthly_data, orient='index')
     return df
 
 
@@ -53,7 +54,6 @@ if __name__ == "__main__":
     # Save to CSV
     fed_data.to_csv('cache/fed_data.csv', index=False)
     print("Data saved to fed_data.csv")
-    
 
     #gets data on the S&p 500 index
-    tf.call_stock_data_api("AAPL")
+    #tf.call_stock_data_api("AAPL")
