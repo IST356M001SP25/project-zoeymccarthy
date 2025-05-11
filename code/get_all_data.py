@@ -5,11 +5,12 @@ import requests
 import json
 import api_calls as ac
 import tool_functions as tf
+import streamlit as st
 
 #calls the api functions in api_functions.py and saves the data to csv files
 
 #gets the fed data on average Interest Rates on U.S. Treasury Securities since covid began (end of feb 2020)
-'''
+
 fed_data = ac.get_fed_data(1052)
 print(fed_data.head())
 # Save to CSV
@@ -27,5 +28,5 @@ tf.call_stock_data_api("XLRE")
 
 #gets jp morgan stock data
 tf.call_stock_data_api("JPM")
-'''
+
 

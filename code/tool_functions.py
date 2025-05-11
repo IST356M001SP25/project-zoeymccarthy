@@ -4,10 +4,13 @@ import datetime as dt
 import requests
 import api_calls as ac
 
-def clean_stock_data(df):
+def clean_stock_data(symbol):
+    lower_symbol = symbol.lower()
+    raw_csv_name = f"cache/raw_{lower_symbol}_data.csv"
+    df = pd.read_csv(raw_csv_name)
     #rename columns for readability
     df.columns = [
-        "date","open", "high", "low", "close",
+        "date", "open", "high", "low", "close",
         "adjusted_close", "volume", "dividend_amount"]
     #convert "date" column to datetime
     df["date"] = pd.to_datetime(df["date"])
@@ -19,7 +22,10 @@ def clean_stock_data(df):
     df["adjusted_close"] = pd.to_numeric(df["adjusted_close"], errors='coerce')
     df["volume"] = pd.to_numeric(df["volume"], errors='coerce', downcast='integer')
     df["dividend_amount"] = pd.to_numeric(df["dividend_amount"], errors='coerce')
-    return df
+    #saves the cleaned data to a new csv file
+    df.to_csv(f'cache/cleaned_{lower_symbol}_data.csv', index=False)
+    print(f"Data saved to cache/cleaned_{lower_symbol}_data.csv")
+
 
 def call_stock_data_api(symbol):
     lower_symbol = symbol.lower()
@@ -32,7 +38,4 @@ def call_stock_data_api(symbol):
     print(f"Data saved to {csv_name}")
 
 if __name__ == "__main__":
-    df = pd.read_csv("cache/raw_stock_data.csv")
-    df = clean_stock_data(df)
-    df.to_csv('cache/cleaned_stock_data.csv', index=False)
-    print("Data saved to cleaned_stock_data.csv")
+    pass
