@@ -3,6 +3,7 @@ import pandas as pd
 import json
 import numpy as np
 import datetime as dt
+import tool_functions as tf
 
 #FED Data API
 #Gets data on average Interest Rates on U.S. Treasury Securities
@@ -13,7 +14,6 @@ def get_fed_data(row_amt):
     sort = '?sort=-record_date'
     format = '&format=json'
     pagination = '&page[number]=1&page[size]='+str(row_amt)
-    #API = f'{baseUrl}{endpoint}{fields}{filter}{sort}{format}{pagination}'
     API = f'{base_url}{endpoint}{sort}{format}{pagination}'
     # Call API and load into a pandas dataframe
     response = requests.get(API)
@@ -31,9 +31,9 @@ def get_symbol_stock_data(symbol):
     base_url = "https://www.alphavantage.co/query?"
     func = "function=TIME_SERIES_WEEKLY_ADJUSTED"
     sort = "&sort=asc"
-    symbol = "&symbol=" + symbol
+    link_symbol = "&symbol=" + symbol
     apikey = "&apikey=KNRVCWZ5R9ZZEXXE"
-    API = f"{base_url}{func}{symbol}{apikey}"
+    API = f"{base_url}{func}{link_symbol}{apikey}"
     # Call API and load into a pandas dataframe
     response = requests.get(API)
     #raise for status if fails
@@ -45,18 +45,15 @@ def get_symbol_stock_data(symbol):
     df = pd.DataFrame.from_dict(weekly_data, orient='index')
     return df
 
-# Call the function and print the result
+
 if __name__ == "__main__":
+    # Call the function and print the result
     fed_data = get_fed_data(1052)
     print(fed_data.head())
     # Save to CSV
-    fed_data.to_csv('data/fed_data.csv', index=False)
+    fed_data.to_csv('cache/fed_data.csv', index=False)
     print("Data saved to fed_data.csv")
     
 
     #gets data on the S&p 500 index
-    stock_data = get_symbol_stock_data("GSPC")
-    print(stock_data.head())
-    # Save to CSV
-    stock_data.to_csv('data/raw_stock_data.csv', index=True)
-    print("Data saved to raw_stock_data.csv")
+    tf.call_stock_data_api("AAPL")

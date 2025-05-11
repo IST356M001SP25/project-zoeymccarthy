@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import datetime as dt
 import requests
+import api_calls as ac
 
 def clean_stock_data(df):
     #rename columns for readability
@@ -26,12 +27,12 @@ def call_stock_data_api(symbol):
     #print out the first 5 rows of the data
     print(stock_data.head())
     # Save to CSV
-    csv_name = f"data/raw_{lower_symbol}_data.csv"
+    csv_name = f"cache/raw_{lower_symbol}_data.csv"
     stock_data.to_csv(csv_name, index=True)
     print(f"Data saved to {csv_name}")
 
 if __name__ == "__main__":
-    df = pd.read_csv("data/raw_stock_data.csv")
+    df = pd.read_csv("cache/raw_stock_data.csv")
     df = clean_stock_data(df)
-    df.to_csv('data/cleaned_stock_data.csv', index=False)
+    df.to_csv('cache/cleaned_stock_data.csv', index=False)
     print("Data saved to cleaned_stock_data.csv")
