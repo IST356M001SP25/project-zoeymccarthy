@@ -1,6 +1,5 @@
-from code.stock_data_api import call_stock_data_api
 import os
-import tool_functions as tf
+import code.tool_functions as tf
 
 # Test 1: Check if the function returns data for a valid stock symbol
 def test_call_stock_data_api_valid_symbol():
