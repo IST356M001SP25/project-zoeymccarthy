@@ -70,7 +70,7 @@ sns.scatterplot(data=filtered, x='date', y='return', hue='bond_yield_change', pa
 plt.xticks(rotation=45) # Rotate labels by 45 degrees
 plt.tight_layout()
 ax.axhline(0, color='gray', linestyle='--')
-ax.set_title(f"Negative {selected_ticker} Returns with Non-negative Bond Yield Change")
+ax.set_title(f"Negative {selected_ticker} Returns with Negative Bond Yield Change")
 st.pyplot(fig)
 
 
